@@ -59,7 +59,9 @@ namespace rezervq
                             break;
 
                     }
-                    
+
+                    Window.GetWindow(this).Close();
+
                 }
             }
             catch (Exception Ex)
