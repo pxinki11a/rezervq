@@ -16,6 +16,6 @@
         <Grid Background="PowderBlue" Panel.ZIndex="-2"></Grid>
         <Grid Grid.Row="2" Background="PowderBlue"></Grid>
         <Frame NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered" Grid.Row="1" x:Name="MainFrame"></Frame>
-        <Button Content="Назад" Name="BtnBack" HorizontalAlignment="Left" Click="BtnBack_Click" Margin="687,21,0,17" Width="113" Height="NaN"></Button>
+        <Button Content="Назад" Name="BtnBack" HorizontalAlignment="Left" Click="BtnBack_Click" Margin="634,17,0,21" Width="113" Height="NaN"></Button>
     </Grid>
 </Window>

@@ -24,9 +24,11 @@ namespace rezervq
         {
             InitializeComponent();
         }
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
             try
             {
                 var userObj = AppConnect.model0db.User.FirstOrDefault(x => x.Login == txbLogin.Text && x.Password == psbPassword.Password);
@@ -48,14 +50,16 @@ namespace rezervq
                             mainWindow.Show();
                             break;
                         case 2:
-                            MessageBox.Show("Здравствуйте, Покупатель " + userObj.Name + "!",
+                            MessageBox.Show("Здравствуйте, " + userObj.Name + "!",
                             "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                             mainWindow.Show();
                             break;
                         default:
                             MessageBox.Show("Данные не обнаружены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                             break;
+
                     }
+                    
                 }
             }
             catch (Exception Ex)

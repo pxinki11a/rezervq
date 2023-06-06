@@ -32,28 +32,40 @@ namespace rezervq
         }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            StringBuilder errors = new StringBuilder();
-
-            if (_currentrezerv.id == 0)
-                errors.AppendLine("Укажите кабинет");
-            if (_currentrezerv.id_fio == 0) ;
-            errors.AppendLine("Укажите фио");
-            if (_currentrezerv.srok == 0)
-                errors.AppendLine("Укажите срок");
-            if (_currentrezerv.id_spec == 0)
-                errors.AppendLine("Укажите специальность");
-
-            if (errors.Length > 0)
+            try { 
+            cabinet cabinets = new cabinet()
             {
-                MessageBox.Show(errors.ToString());
-                return;
-            }
-            if (_currentrezerv.id == 0)
-                rezervEntities.GetContext().cabinet.Add(_currentrezerv);
+                nomercab = Int32.Parse(TBcabinet.Text),
+                id_fio = Int32.Parse(TBfio.Text),
+                //status = TBstatus.Text,
+                srok = Int32.Parse(TBsrok.Text),
+                id_spec = Int32.Parse(TBspec.Text),
+            };
+            AppData.db.cabinet.Add(cabinets);
+            AppData.db.SaveChanges();
 
-            try
-            {
-                rezervEntities.GetContext().SaveChanges();
+            //StringBuilder errors = new StringBuilder();
+
+            //if (_currentrezerv.id == 0)
+            //    errors.AppendLine("Укажите кабинет");
+            //if (_currentrezerv.id_fio == 0);
+            //errors.AppendLine("Укажите фио");
+            //if (_currentrezerv.srok == 0)
+            //    errors.AppendLine("Укажите срок");
+            //if (_currentrezerv.id_spec == 0)
+            //    errors.AppendLine("Укажите специальность");
+
+            //if (errors.Length > 0)
+            //{
+            //    MessageBox.Show(errors.ToString());
+            //    return;
+            //}
+            //if (_currentrezerv.id == 0)
+            //    rezervEntities.GetContext().cabinet.Add(_currentrezerv);
+
+            
+            
+                
                 MessageBox.Show("Информация сохранена");
             }
             catch (Exception ex)
@@ -61,5 +73,10 @@ namespace rezervq
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
+    }
 }

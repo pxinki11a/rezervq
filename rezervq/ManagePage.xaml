@@ -42,10 +42,12 @@
                         </Grid.RowDefinitions>
 
 
-                        <TextBlock Text="{Binding cabinet}" VerticalAlignment="Center" TextAlignment="Center"  Margin="5 5" Grid.Row="0" Width="390"
+                        <TextBlock Text="{Binding nomercab}" VerticalAlignment="Center" TextAlignment="Center"  Margin="5 5" Grid.Row="0" Width="390"
                                    TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="26"></TextBlock>
-                        <TextBlock Text="{Binding fio}" Grid.Row="1" Margin="5 5 5 15" HorizontalAlignment="Center" FontSize="26" FontWeight="Bold"></TextBlock>
-                        <TextBlock Text="{Binding spec}" Grid.Row="3" HorizontalAlignment="Left" FontSize="14"></TextBlock>
+                        <TextBlock Text="{Binding fio.fio}" Grid.Row="1" Margin="5 5 5 15" HorizontalAlignment="Center" FontSize="26" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding status}" Grid.Row="2" HorizontalAlignment="Left" FontSize="14"></TextBlock>
+                        <TextBlock Text="{Binding srok}" Grid.Row="3" HorizontalAlignment="Left" FontSize="14"></TextBlock>
+                        <TextBlock Text="{Binding spec.spec}" Grid.Row="4" HorizontalAlignment="Left" FontSize="14"></TextBlock>
                         <Button Content="Редактировать" Name="BtnEdit" Click="BtnEdit_Click" Grid.Row="4" HorizontalAlignment="Center"></Button>
 
                     </Grid>
