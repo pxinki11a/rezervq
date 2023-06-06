@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище rezervModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cabinet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomercab" Type="int" />
+          <Property Name="id_fio" Type="int" />
+          <Property Name="status" Type="bit" />
+          <Property Name="srok" Type="int" />
+          <Property Name="id_spec" Type="int" />
+        </EntityType>
+        <EntityType Name="fio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fio" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="spec">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="spec" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK_cabinet_fio">
+          <End Role="fio" Type="Self.fio" Multiplicity="0..1" />
+          <End Role="cabinet" Type="Self.cabinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cabinet">
+              <PropertyRef Name="id_fio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cabinet_spec">
+          <End Role="spec" Type="Self.spec" Multiplicity="0..1" />
+          <End Role="cabinet" Type="Self.cabinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="spec">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cabinet">
+              <PropertyRef Name="id_spec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище rezervModelContainer">
+          <EntitySet Name="cabinet" EntityType="Self.cabinet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fio" EntityType="Self.fio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="spec" EntityType="Self.spec" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_cabinet_fio" Association="Self.FK_cabinet_fio">
+            <End Role="fio" EntitySet="fio" />
+            <End Role="cabinet" EntitySet="cabinet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cabinet_spec" Association="Self.FK_cabinet_spec">
+            <End Role="spec" EntitySet="spec" />
+            <End Role="cabinet" EntitySet="cabinet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="rezervModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cabinet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomercab" Type="Int32" />
+          <Property Name="id_fio" Type="Int32" />
+          <Property Name="status" Type="Boolean" />
+          <Property Name="srok" Type="Int32" />
+          <Property Name="id_spec" Type="Int32" />
+          <NavigationProperty Name="fio" Relationship="Self.FK_cabinet_fio" FromRole="cabinet" ToRole="fio" />
+          <NavigationProperty Name="spec" Relationship="Self.FK_cabinet_spec" FromRole="cabinet" ToRole="spec" />
+        </EntityType>
+        <EntityType Name="fio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fio1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="cabinet" Relationship="Self.FK_cabinet_fio" FromRole="fio" ToRole="cabinet" />
+        </EntityType>
+        <EntityType Name="spec">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="spec1" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="cabinet" Relationship="Self.FK_cabinet_spec" FromRole="spec" ToRole="cabinet" />
+        </EntityType>
+        <Association Name="FK_cabinet_fio">
+          <End Role="fio" Type="Self.fio" Multiplicity="0..1" />
+          <End Role="cabinet" Type="Self.cabinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cabinet">
+              <PropertyRef Name="id_fio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cabinet_spec">
+          <End Role="spec" Type="Self.spec" Multiplicity="0..1" />
+          <End Role="cabinet" Type="Self.cabinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="spec">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cabinet">
+              <PropertyRef Name="id_spec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="rezervEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cabinet" EntityType="Self.cabinet" />
+          <EntitySet Name="fio" EntityType="Self.fio" />
+          <EntitySet Name="spec" EntityType="Self.spec" />
+          <AssociationSet Name="FK_cabinet_fio" Association="Self.FK_cabinet_fio">
+            <End Role="fio" EntitySet="fio" />
+            <End Role="cabinet" EntitySet="cabinet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cabinet_spec" Association="Self.FK_cabinet_spec">
+            <End Role="spec" EntitySet="spec" />
+            <End Role="cabinet" EntitySet="cabinet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище rezervModelContainer" CdmEntityContainer="rezervEntities">
+          <EntitySetMapping Name="cabinet">
+            <EntityTypeMapping TypeName="rezervModel.cabinet">
+              <MappingFragment StoreEntitySet="cabinet">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nomercab" ColumnName="nomercab" />
+                <ScalarProperty Name="id_fio" ColumnName="id_fio" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="srok" ColumnName="srok" />
+                <ScalarProperty Name="id_spec" ColumnName="id_spec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fio">
+            <EntityTypeMapping TypeName="rezervModel.fio">
+              <MappingFragment StoreEntitySet="fio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fio1" ColumnName="fio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spec">
+            <EntityTypeMapping TypeName="rezervModel.spec">
+              <MappingFragment StoreEntitySet="spec">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="spec1" ColumnName="spec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

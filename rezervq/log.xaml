@@ -1,0 +1,24 @@
+﻿<Window x:Class="rezervq.log"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rezervq"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/background.jpg"></ImageBrush>
+
+        </Grid.Background>
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="350*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="{Binding Content.Title, ElementName=FrmMain}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50"/>
+            <Frame x:Name="FrmMain" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Grid>
+</Window>
