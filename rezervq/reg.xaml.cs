@@ -75,4 +75,5 @@ namespace rezervq
                 psbPass.BorderBrush = Brushes.Green;
             }
         }
+    }
 }

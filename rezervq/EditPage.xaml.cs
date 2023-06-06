@@ -49,7 +49,7 @@ namespace rezervq
                 return;
             }
             if (_currentrezerv.id == 0)
-                rezervEntities.GetContext().rezerv.Add(_currentrezerv);
+                rezervEntities.GetContext().cabinet.Add(_currentrezerv);
 
             try
             {
