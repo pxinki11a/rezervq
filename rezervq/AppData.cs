@@ -8,6 +8,6 @@ namespace rezervq
 {
     internal class AppData
     {
-        public static rezervEntities db = new rezervEntities();
+        public static rezervEntities2 db = new rezervEntities2();
     }
 }

@@ -11,16 +11,18 @@ namespace rezervq
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class cabinet
     {
         public int id { get; set; }
         public Nullable<int> nomercab { get; set; }
         public Nullable<int> id_fio { get; set; }
         public Nullable<bool> status { get; set; }
-        public Nullable<int> srok { get; set; }
+        public DateTime datarezerva { get; set; }
+        public DateTime konecrezerva { get; set; }
         public Nullable<int> id_spec { get; set; }
-    
+        public string photo { get; set; }
+
         public virtual fio fio { get; set; }
         public virtual spec spec { get; set; }
     }

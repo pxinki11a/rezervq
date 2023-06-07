@@ -27,7 +27,7 @@ namespace rezervq
 
         private void Updatecabinet()
         {
-            var currentcabinet = rezervEntities.GetContext().cabinet.ToList();
+            var currentcabinet = rezervEntities2.GetContext().cabinet.ToList();
 
             //currentcabinet = currentcabinet.Where(p => p.nomercab.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
 
@@ -60,11 +60,11 @@ namespace rezervq
             {
                 try
                 {
-                    rezervEntities.GetContext().cabinet.RemoveRange(productForRemoving);
-                    rezervEntities.GetContext().SaveChanges();
+                    rezervEntities2.GetContext().cabinet.RemoveRange(productForRemoving);
+                    rezervEntities2.GetContext().SaveChanges();
                     MessageBox.Show("Данные удалены!");
 
-                    DGridRez.ItemsSource = rezervEntities.GetContext().cabinet.ToList();
+                    DGridRez.ItemsSource = rezervEntities2.GetContext().cabinet.ToList();
                 }
                 catch (Exception ex)
                 {
@@ -77,8 +77,8 @@ namespace rezervq
         {
             if (Visibility == Visibility.Visible)
             {
-                rezervEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                DGridRez.ItemsSource = rezervEntities.GetContext().cabinet.ToList();
+                rezervEntities2.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DGridRez.ItemsSource = rezervEntities2.GetContext().cabinet.ToList();
             }
         }
 

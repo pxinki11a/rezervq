@@ -13,22 +13,21 @@ namespace rezervq
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class rezervEntities : DbContext
+    public partial class rezervEntities2 : DbContext
     {
-        private static rezervEntities _context;
-        public rezervEntities()
-            : base("name=rezervEntities")
+        private static rezervEntities2 _context;
+        public rezervEntities2()
+            : base("name=rezervEntities2")
         {
         }
-
-
-        public static rezervEntities GetContext()
+        public static rezervEntities2 GetContext()
         {
             if (_context == null)
-                _context = new rezervEntities();
+                _context = new rezervEntities2();
 
             return _context;
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

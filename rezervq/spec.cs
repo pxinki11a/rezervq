@@ -14,7 +14,7 @@ namespace rezervq
     
     public partial class spec
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA214:DoNotCallOverridableMethodsInConstructors")]
         public spec()
         {
             this.cabinet = new HashSet<cabinet>();
@@ -23,7 +23,7 @@ namespace rezervq
         public int id { get; set; }
         public string spec1 { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cabinet> cabinet { get; set; }
     }
 }

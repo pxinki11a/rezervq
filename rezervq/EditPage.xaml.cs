@@ -38,7 +38,8 @@ namespace rezervq
                 nomercab = Int32.Parse(TBcabinet.Text),
                 id_fio = Int32.Parse(TBfio.Text),
                 //status = TBstatus.Text,
-                srok = Int32.Parse(TBsrok.Text),
+                datarezerva = DateTime.Parse(TBdatarezerva.Text),
+                konecrezerva = DateTime.Parse(TBkonecrezerva.Text),
                 id_spec = Int32.Parse(TBspec.Text),
             };
             AppData.db.cabinet.Add(cabinets);
@@ -61,7 +62,7 @@ namespace rezervq
             //    return;
             //}
             //if (_currentrezerv.id == 0)
-            //    rezervEntities.GetContext().cabinet.Add(_currentrezerv);
+            //    rezervEntities2.GetContext().cabinet.Add(_currentrezerv);
 
             
             
@@ -75,6 +76,11 @@ namespace rezervq
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TBspec_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

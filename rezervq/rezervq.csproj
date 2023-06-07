@@ -67,15 +67,11 @@
     <Compile Include="AppConnect.cs" />
     <Compile Include="AppData.cs" />
     <Compile Include="AppFrame.cs" />
-    <Compile Include="cabinet.cs">
-      <DependentUpon>rezervq.tt</DependentUpon>
-    </Compile>
+    <Compile Include="cabinet.cs" />
     <Compile Include="EditPage.xaml.cs">
       <DependentUpon>EditPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="fio.cs">
-      <DependentUpon>rezervq.tt</DependentUpon>
-    </Compile>
+    <Compile Include="fio.cs" />
     <Compile Include="log.xaml.cs">
       <DependentUpon>log.xaml</DependentUpon>
     </Compile>
@@ -122,9 +118,8 @@
     <Compile Include="Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="spec.cs">
-      <DependentUpon>rezervq.tt</DependentUpon>
-    </Compile>
+    <Compile Include="spec.cs" />
+    <Compile Include="ToDoModel.cs" />
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -213,18 +208,18 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\background.png" />
-    <Resource Include="Resources\mainbackground.jpg" />
     <Content Include="rezervq.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>rezervq.Context.cs</LastGenOutput>
       <DependentUpon>rezervq.edmx</DependentUpon>
+      <LastGenOutput>rezervq.Context.cs</LastGenOutput>
     </Content>
     <Content Include="rezervq.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>rezervq.edmx</DependentUpon>
       <LastGenOutput>rezervq.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\background.png" />
+    <Resource Include="Resources\mainbackground.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

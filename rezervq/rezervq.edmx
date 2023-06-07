@@ -13,8 +13,10 @@
           <Property Name="nomercab" Type="int" />
           <Property Name="id_fio" Type="int" />
           <Property Name="status" Type="bit" />
-          <Property Name="srok" Type="int" />
+          <Property Name="datarezerva" Type="date" />
+          <Property Name="konecrezerva" Type="date" />
           <Property Name="id_spec" Type="int" />
+          <Property Name="photo" Type="nchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="fio">
           <Key>
@@ -29,6 +31,16 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="spec" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_cabinet_fio">
           <End Role="fio" Type="Self.fio" Multiplicity="0..1" />
@@ -58,6 +70,7 @@
           <EntitySet Name="cabinet" EntityType="Self.cabinet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="fio" EntityType="Self.fio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="spec" EntityType="Self.spec" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_cabinet_fio" Association="Self.FK_cabinet_fio">
             <End Role="fio" EntitySet="fio" />
             <End Role="cabinet" EntitySet="cabinet" />
@@ -80,8 +93,10 @@
           <Property Name="nomercab" Type="Int32" />
           <Property Name="id_fio" Type="Int32" />
           <Property Name="status" Type="Boolean" />
-          <Property Name="srok" Type="Int32" />
+          <Property Name="datarezerva" Type="DateTime" Precision="0" />
+          <Property Name="konecrezerva" Type="DateTime" Precision="0" />
           <Property Name="id_spec" Type="Int32" />
+          <Property Name="photo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="fio" Relationship="Self.FK_cabinet_fio" FromRole="cabinet" ToRole="fio" />
           <NavigationProperty Name="spec" Relationship="Self.FK_cabinet_spec" FromRole="cabinet" ToRole="spec" />
         </EntityType>
@@ -100,6 +115,16 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="spec1" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="cabinet" Relationship="Self.FK_cabinet_spec" FromRole="spec" ToRole="cabinet" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_cabinet_fio">
           <End Role="fio" Type="Self.fio" Multiplicity="0..1" />
@@ -125,10 +150,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="rezervEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="rezervEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="cabinet" EntityType="Self.cabinet" />
           <EntitySet Name="fio" EntityType="Self.fio" />
           <EntitySet Name="spec" EntityType="Self.spec" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <AssociationSet Name="FK_cabinet_fio" Association="Self.FK_cabinet_fio">
             <End Role="fio" EntitySet="fio" />
             <End Role="cabinet" EntitySet="cabinet" />
@@ -143,7 +169,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище rezervModelContainer" CdmEntityContainer="rezervEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище rezervModelContainer" CdmEntityContainer="rezervEntities2">
           <EntitySetMapping Name="cabinet">
             <EntityTypeMapping TypeName="rezervModel.cabinet">
               <MappingFragment StoreEntitySet="cabinet">
@@ -151,8 +177,10 @@
                 <ScalarProperty Name="nomercab" ColumnName="nomercab" />
                 <ScalarProperty Name="id_fio" ColumnName="id_fio" />
                 <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="srok" ColumnName="srok" />
+                <ScalarProperty Name="datarezerva" ColumnName="datarezerva" />
+                <ScalarProperty Name="konecrezerva" ColumnName="konecrezerva" />
                 <ScalarProperty Name="id_spec" ColumnName="id_spec" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -169,6 +197,17 @@
               <MappingFragment StoreEntitySet="spec">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="spec1" ColumnName="spec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="rezervModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

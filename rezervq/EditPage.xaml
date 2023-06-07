@@ -16,6 +16,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="350"/>
@@ -24,13 +25,16 @@
         <TextBlock FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Кабинет"></TextBlock>
         <TextBlock FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="ФИО" Grid.Row="1"></TextBlock>
         <TextBlock FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Статус" Grid.Row="2"></TextBlock>
-        <TextBlock FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Срок" Grid.Row="3"></TextBlock>
-        <TextBlock FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Специальность" Grid.Row="4"></TextBlock>
+        <TextBlock FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="дата начала резерва" Grid.Row="3"></TextBlock>
+        <TextBlock FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="дата конца резерва" Grid.Row="4"></TextBlock>
+        <TextBlock FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Специальность" Grid.Row="5"></TextBlock>
         <TextBox Name="TBcabinet" Text="{Binding nomercab}" Grid.Column="1" TextChanged="TextBox_TextChanged" Margin="30,19,30,20"></TextBox>
-        <TextBox Name="TBfio" Text="{Binding id_fio}" Grid.Column="1" Grid.Row="1" Margin="30,19,30,20"></TextBox>
-        <TextBox Name="TBstatus" Text="{Binding status}" Grid.Column="1" Grid.Row="2" Margin="30,19,30,20"></TextBox>
-        <TextBox Name="TBsrok" MaxLength="3" Text="{Binding srok}" Grid.Column="1" Grid.Row="3" Margin="30,19,30,20"/>
-        <TextBox Name="TBspec" Text="{Binding id_spec}" Grid.Column="1" Grid.Row="4" Margin="30,19,30,20"></TextBox>
-        <Button FontSize="25" Content="Сохранить" Grid.Row="5" Name="BtnSave" Click="BtnSave_Click" Height="NaN" Margin="102,5,91,28" Width="NaN" Grid.Column="1"/>
+        <TextBox Name="TBfio" Text="{Binding id_fio.fio}" Grid.Column="1" Grid.Row="1" Margin="30,19,30,20"></TextBox>
+        <RadioButton IsChecked="{Binding status}"  Content="Занято" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Grid.Column="1" Margin="30,30,0,0"/>
+        <!--<TextBox Name="TBstatus" Text="{Binding status}" Grid.Column="1" Grid.Row="2" Margin="30,19,30,20"></TextBox>-->
+        <DatePicker Name="TBdatarezerva" Text="{Binding datarezerva}" Grid.Column="1" Grid.Row="3" Margin="30,19,30,20"></DatePicker>
+        <DatePicker Name="TBkonecrezerva" Text="{Binding konecrezerva}" Grid.Column="1" Grid.Row="4" Margin="30,14,30,25"></DatePicker>
+        <TextBox Name="TBspec" Text="{Binding id_spec}" Grid.Column="1" Grid.Row="5" Margin="30,24,30,15"></TextBox>
+        <Button FontSize="25" Content="Сохранить" Grid.Row="6" Name="BtnSave" Click="BtnSave_Click" Height="NaN" Margin="96,23,96,10" Width="NaN" Grid.Column="1"/>
     </Grid>
 </Page>
